@@ -50,16 +50,16 @@ class CaseBase:
     diff = 0
     diffOneDays = 0
     diffAnotherDays = 0
-    if one.size.lower() in self.levels.keys():
+    if one.size.lower() in self.levels.keys() and another.size.lower() in self.levels.keys():
         diff = self.weights['Size'] * ((3 - abs(self.levels[one.size.lower()] - self.levels[another.size.lower()])) / 3)
     returnSim += diff
-    if one.quality.lower() in self.levels.keys():
+    if one.quality.lower() in self.levels.keys() and another.quality.lower() in self.levels.keys():
         diff = self.weights['Quality'] * ((3 - abs(self.levels[one.quality.lower()] - self.levels[another.quality.lower()])) / 3)
     returnSim += diff
-    if one.price.lower() in self.levels.keys():
+    if one.price.lower() in self.levels.keys() and another.price.lower() in self.levels.keys():
         diff = self.weights['Price'] * ((3 - abs(self.levels[one.price.lower()] - self.levels[another.price.lower()])) / 3)
     returnSim += diff
-    if one.music.lower() in self.levels.keys():
+    if one.music.lower() in self.levels.keys() and another.music.lower() in self.levels.keys():
         diff = self.weights['Music'] * ((3 - abs(self.levels[one.music.lower()] - self.levels[another.music.lower()])) / 3)
     returnSim += diff
     anotherWeekDays = list(another.openAt.split(','))
@@ -76,7 +76,7 @@ class CaseBase:
         return 0
 
    def simLocation(self,one,another):
-    if one.lower() in self.locationList:
+    if one.lower() in self.locationList and another in self.locationList:
         diff = (3 - self.locationList[one.lower()][another.lower()]) / 3
         return diff 
     else:
